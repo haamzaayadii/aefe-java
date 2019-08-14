@@ -1,0 +1,26 @@
+
+---
+
+# install maven
+
+- name: install maven
+  apt:
+   name: "{{ maven.packages }}"
+   state: present
+
+# Set up environement variables
+
+- name: set up environement variables
+  template:
+    src: maven.sh
+    dest: "{{ maven.dirpathvarenv}}"
+
+- name: make script executable
+  command: chmod +x "{{ maven.execvar }}"
+
+- name: load the environment variables
+  sudo: no
+  shell: source "{{ maven.loadvar }}"  && source "{{ maven.execvar }}"
+  args:
+    executable:  "{{ maven.execbin }}"
+

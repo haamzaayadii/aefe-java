@@ -1,0 +1,15 @@
+---
+- name: install apache web serveur
+  apt:
+   name: "{{ apache.packages }}"
+   update_cache: yes
+   state: latest
+
+
+- name: start and enable apache server web
+  service:
+   name: "{{ item }}"
+   state: started
+   enabled: True
+  with_items: "{{ apache.service }}"
+

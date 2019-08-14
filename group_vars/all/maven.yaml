@@ -1,0 +1,11 @@
+---
+
+ maven:
+   packages: maven
+   javahome: /usr/lib/jvm/default-java
+   m2home: /opt/maven
+   mavenhome: /opt/maven
+   dirpathvarenv: /etc/profile.d
+   execvar: /etc/profile.d/maven.sh
+   loadvar: /root/.bashrc
+   execbin: /bin/bash

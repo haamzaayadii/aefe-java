@@ -1,0 +1,4 @@
+
+[aefe-java]
+
+10.20.64.83 ansible_ssh_pass=aefe-java ansible_ssh_user=root

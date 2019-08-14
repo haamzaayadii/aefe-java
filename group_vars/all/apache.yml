@@ -1,0 +1,11 @@
+---
+
+ apache:
+   packages: apache2
+   service: apache2
+   http_port: 80
+   domain: static-wiki
+   documentroot: /var/www/html/static-wiki/
+   servername: static-wiki.com
+   serveralias: www.static-wiki.com
+   serveradmin: webmaster@localhost

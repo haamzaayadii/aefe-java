@@ -1,0 +1,47 @@
+
+
+# directory css
+
+- name : create directory css
+  file:
+    path: /var/www/html/static-wiki/css
+    state: directory
+
+- name:
+  file:
+   path: /var/www/html/static-wiki/css
+   state: directory
+   mode: 0777
+
+
+
+# Deploy normalize.css
+
+- name: Deploy normalize.css
+  copy: 
+    src: files/normalize.css
+    dest: /var/www/html/static-wiki/css/
+    owner: root
+    group: root
+    mode: 0644
+
+# Deploy skeleton.css
+
+- name: Deploy skeleton.css
+  copy: 
+    src: files/skeleton.css 
+    dest: /var/www/html/static-wiki/css/
+    owner: root
+    group: root
+    mode: 0644
+
+
+# Deploy main.css
+
+- name: Deploy main.css
+  copy: 
+    src: files/main.css 
+    dest: /var/www/html/static-wiki/css/
+    owner: root
+    group: root
+    mode: 0644

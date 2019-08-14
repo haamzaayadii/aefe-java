@@ -1,0 +1,58 @@
+---
+# tasks file for Java-SAML-Toolkit
+
+# install maven
+
+- name: install maven
+  import_tasks: maven-install.yml
+   
+
+
+
+
+# install packages 
+
+- name: install unzip wget java git
+  import_tasks: install-packages.yml
+ 
+
+# dowload and checkout java-saml
+
+#- name: download java-saml from git
+#  command: wget https://codeload.github.com/java-saml-master.zip
+
+# Create directory static-wiki
+
+- name : Create directory java-saml
+  file:
+    path: /java-saml
+    state: directory
+
+
+
+# Change permission directory java-saml
+
+- name: change permission
+  file:
+   path: /java-saml
+   state: directory
+   mode: 0777
+
+
+# Unarchive java-saml
+- name: Unarchive java-saml
+  unarchive:
+    src: /tmp/java-saml-2.4.0.tar.gz
+    dest: /java-saml
+    remote_src: yes
+
+# Deploy java-saml-tookit-jspsample-2.4.0.war    
+
+- name: java-saml-tookit-jspsample-2.4.0.war 
+  command: wget https://repo1.maven.org/maven2/com/onelogin/java-saml-tookit-jspsample/2.4.0/java-saml-tookit-jspsample-2.4.0.war
+
+- name: move java-saml-tookit-jspsample-2.4.0.war in /java-saml
+  command: mv java-saml-tookit-jspsample-2.4.0.war /java-saml
+
+- name: Deploy war java-saml on tomcat
+  command: mv /java-saml/java-saml-tookit-jspsample-2.4.0.war /opt/tomcat/apache-tomcat-8.5.41/webapps

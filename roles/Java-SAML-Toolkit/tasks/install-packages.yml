@@ -1,0 +1,12 @@
+
+---
+
+# Install all packages unzip wget java
+
+- name: install unzip wget java git
+  apt: name={{ item }} update_cache=yes state=latest
+  with_items: 
+    - "{{ wget.packages }}"
+    - "{{ unzip.packages }}"
+    - "{{ javaopenjdk.packages }}"
+    - "{{ git.packages }}"

@@ -1,0 +1,14 @@
+---
+# defaults file for Java-SAML-Toolkit
+
+ wget:
+   packages: wget
+
+ unzip:
+   packages: unzip
+
+ javaopenjdk:
+   packages: default-jdk
+
+ git:
+   packages: git

@@ -1,0 +1,9 @@
+
+
+- name: Setup Deployment spécifiques Java
+  hosts: aefe-java
+  become: yes
+  roles:
+    - static-wiki
+    - Java-SAML-Toolkit
+

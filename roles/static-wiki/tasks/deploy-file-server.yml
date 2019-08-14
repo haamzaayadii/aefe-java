@@ -1,0 +1,42 @@
+
+
+# Deploy index.html
+
+- name: Deploy index.html
+  copy: 
+    src: files/index.html 
+    dest: /var/www/html/static-wiki
+    owner: root
+    group: root
+    mode: 0644
+
+# Deploy index.md
+
+- name: Deploy index.md
+  copy: 
+    src: files/index.md 
+    dest: /var/www/html/static-wiki
+    owner: root
+    group: root
+    mode: 0644
+
+# Deploy main.js
+
+- name: Deploy main.js
+  copy: 
+    src: files/main.js 
+    dest: /var/www/html/static-wiki
+    owner: root
+    group: root
+    mode: 0644 
+
+# Deploy all.txt
+
+- name: Deploy all.txt
+  copy: 
+    src: files/all.txt 
+    dest: /var/www/html/static-wiki
+    owner: root
+    group: root
+    mode: 0644
+

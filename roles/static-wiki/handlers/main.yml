@@ -1,0 +1,10 @@
+---
+# handlers file for static-wiki
+
+
+- name: Restarted Apache2 Service
+  service:
+   name: "{{ apache.service }}"
+   state: restarted
+   enabled: True
+  

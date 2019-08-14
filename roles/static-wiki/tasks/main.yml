@@ -1,0 +1,56 @@
+---
+# tasks file for static-wiki
+
+
+# Install server web apache
+
+- name: Install and start apache web server
+  import_tasks: install-apache.yml
+
+
+# Create directory static-wiki
+
+- name : Create directory static-wiki
+  file:
+#    path: /var/www/html/static-wiki
+    path: "{{ apache.documentroot }}"
+    state: directory
+    
+
+
+# Change permission directory
+
+- name: change permission
+  file:
+#   path: /var/www/html/static-wiki
+   path: "{{ apache.documentroot }}"
+   state: directory
+   mode: 0777
+
+
+# Deploy file static-wiki
+
+- name: deploy static-wiki file
+  import_tasks: deploy-file-server.yml
+
+# Deploy static-wiki.conf
+
+- name: Deploy static-wiki.conf
+  template: src=static-wiki.conf.j2 dest=/etc/apache2/sites-available/static-wiki.conf 
+
+
+- name: change ownership
+  command: chown -R www-data:www-data /var/www/html/static-wiki
+
+# Permission 
+
+- name: permission
+  command: chmod -R g+rw /var/www/html/static-wiki/
+
+
+# Rewrite
+
+- name : rewrite from apache
+  command: a2ensite static-wiki
+  notify: Restarted Apache2 Service 
+ 
